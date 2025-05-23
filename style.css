@@ -1,0 +1,137 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 10rem; /* Adjust based on your header height */
+  }
+  
+  
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .active {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  #servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    #servicesGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    #servicesGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  #servicesGrid {
+    border: 2px dashed red;
+    padding: 10px;
+  }
+  section h2 {
+    padding-top: 1rem;
+    margin-top: 0;
+  }
+
+/* Counter Animation */
+.counter {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2f855a; /* Green color */
+}
+/* Toggle Button Styles */
+#darkModeToggle + #toggleSwitch {
+    position: relative;
+  }
+  
+  #darkModeToggle:checked + #toggleSwitch > div {
+    transform: translateX(100%);
+    background-color: #2f855a; /* Green for dark mode */
+  }
+  
+  /* Dark Mode Styles */
+  body.dark {
+    background-color: #1a202c; /* Dark background */
+    color: #f7fafc; /* Light text */
+  }
+  
+  body.dark header {
+    background-color: #2d3748; /* Darker header */
+  }
+  
+  body.dark a {
+    color: #63b3ed; /* Light blue links */
+  }
+  
+  body.dark .bg-green-50 {
+    background-color: #2d3748; /* Darker background for sections */
+  }
+  
+  body.dark .bg-gray-200 {
+    background-color: #4a5568; /* Darker progress bar background */
+  }
+  
+  body.dark .bg-green-800 {
+    background-color: #2f855a; /* Slightly lighter green */
+  }
+/* Progress Bar Animation */
+.progress-bar {
+    transition: width 1.5s ease-in-out;
+  }
+
+    /* Background image */
+/* Default background for the body */
+body {
+  font-family: 'Inter', sans-serif;
+  background-image: url('./assets/icons/home1.jpg'); /* Ensure the path is correct */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 0.5s ease-in-out;
+}
+/* smooth scrolling for navigation */
+#mainNav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+button, 
+a.inline-block {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover, 
+a.inline-block:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(72, 187, 120, 0.5);
+  background-color: #34d399; /* Tailwind’s green-400 as example */
+  color: white;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px 0 rgba(72, 187, 120, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px 6px rgba(72, 187, 120, 0.9);
+  }
+}
+
+.hero-glow {
+  animation: pulseGlow 2.5s infinite;
+  transition: background-color 0.3s ease;
+}
+
+.hero-glow:hover {
+  animation-play-state: paused; /* Pause glow on hover */
+  background-color: #22c55e; /* Tailwind green-500 */
+  box-shadow: 0 0 25px 8px rgba(72, 187, 120, 1);
+}
+
+

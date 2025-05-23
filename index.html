@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microfarm Company Ltd</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="./assets/images/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="text-black dark:bg-gray-900 dark:text-white">
+  <!-- Header -->
+  <header id="navbar" class="bg-green-800 text-white p-4 sticky top-0 z-50 shadow transition-all duration-300">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="./assets/icons/logo.png" alt="Microfarm Logo" class="h-10 w-10 object-contain border" />
+        <span class="text-2xl font-bold">Microfarm Co. Ltd</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="menuToggle" class="md:hidden focus:outline-none">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <nav id="mainNav" class="hidden md:flex space-x-4 text-sm md:text-base">
+          <a href="index.html" id="homeLink">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <!-- Dark Mode Toggle -->
+        <div class="flex items-center">
+          <label for="darkModeToggle" class="mr-2 cursor-pointer">🌗</label>
+          <input type="checkbox" id="darkModeToggle" class="hidden" />
+          <div id="toggleSwitch" class="w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer">
+            <div class="w-5 h-5 bg-white rounded-full shadow absolute left-0 transition-transform duration-300"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="space-y-20 py-10">
+    <!-- Hero Section -->
+    <section
+      class="relative bg-gradient-to-br from-green-900 via-green-700 to-green-500 text-white py-20 px-6 rounded-xl overflow-hidden shadow-lg"
+      data-aos="fade-up"
+    >
+      <div class="container mx-auto relative z-10 text-center space-y-6 max-w-4xl">
+        <h1 id="typingText" class="text-4xl md:text-5xl font-extrabold leading-tight typing-text"></h1>
+        <p class="text-lg max-w-2xl mx-auto">
+          Your trusted partner process improvement, strategic consulting and long-term sustainability.Empowering agribusiness
+          through sustainable innovation, strategic consulting, and data-driven excellence.
+        </p>
+        <a
+        href="projects.html"
+        class="inline-block bg-white text-green-800 font-semibold px-6 py-3 rounded-full shadow hover:bg-green-100 transition-all duration-300 hero-glow"
+      >
+        Explore Our Projects
+      </a>
+      
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(#ffffff22_1px,transparent_1px)] [background-size:16px_16px] opacity-30 z-0"
+      ></div>
+    </section>
+
+    <!-- Mission -->
+    <section id="mission" class="bg-gray-100 rounded-xl p-10" data-aos="flip-left">
+      <div class="container mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-semibold mb-4 text-green-700">Our Mission</h2>
+        <p>
+          To empower business to achieve operational excellence, strategic clarity, and sustainabe growth through expert
+          consultancy and actionable insights.
+        </p>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section id="vision" class="bg-gray-100 rounded-xl p-10" data-aos="flip-left">
+      <div class="container mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-semibold mb-4 text-green-700">Our Vision</h2>
+        <p>To be the leading partner in intelligent business transformation across Africa and beyond</p>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section id="values" class="text-center md:text-left" data-aos="zoom-in">
+      <div class="container mx-auto max-w-5xl flex flex-col md:flex-row items-center md:items-start gap-10">
+    
+        <!-- Image on the Left -->
+        <div class="md:w-1/2">
+          <img src="./assets/icons/core.jpg" alt="Core Values Image" class="rounded-lg shadow-lg w-full object-cover" />
+        </div>
+    
+        <!-- Text Content on the Right -->
+        <div class="md:w-1/2">
+          <h2 class="text-3xl font-semibold mb-4 text-green-700">Core Values</h2>
+          <ul class="list-disc list-inside text-left space-y-2">
+            <li>Precision – Every detail is optimized</li>
+            <li>Adaptability – Thriving through change</li>
+            <li>Insight – Decisions grounded in deep analysis</li>
+            <li>Integrity – Honest partnerships and trusted results</li>
+            <li>Growth – We measure our success by yours</li>
+          </ul>
+        </div>
+    
+      </div>
+    </section>
+    
+
+    <!-- Expertise -->
+    <section id="progress" class="bg-green-50 py-10">
+      <div class="container mx-auto max-w-4xl">
+        <h2 class="text-3xl font-bold text-center text-green-700 mb-6">Our Expertise</h2>
+        <div class="space-y-6">
+          <div>
+            <p class="text-lg font-semibold text-gray-700">Agribusiness Consulting</p>
+            <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+              <div
+                class="bg-green-800 h-4 rounded-full progress-bar"
+                style="width: 0%;"
+                data-progress="90"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <p class="text-lg font-semibold text-gray-700">Sustainability Solutions</p>
+            <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+              <div
+                class="bg-green-800 h-4 rounded-full progress-bar"
+                style="width: 0%;"
+                data-progress="85"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <p class="text-lg font-semibold text-gray-700">Strategic Planning</p>
+            <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+              <div
+                class="bg-green-800 h-4 rounded-full progress-bar"
+                style="width: 0%;"
+                data-progress="95"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose us -->
+    <section id="whyChooseUs" class="text-center md:text-left" data-aos="zoom-in">
+      <div class="container mx-auto max-w-5xl flex flex-col md:flex-row items-center md:items-start gap-10">
+        
+        <!-- Text Content -->
+        <div class="md:w-1/2">
+          <h2 class="text-3xl font-semibold mb-4 text-green-700">Why Choose Us?</h2>
+          <ul class="list-disc list-inside text-left space-y-2">
+            <li>End-to-End execution</li>
+            <li>Data driven Solutions by real Analysis</li>
+            <li>Cross Industry Experience</li>
+            <li>People-Centric</li>
+          </ul>
+        </div>
+        
+        <!-- Image Content -->
+        <div class="md:w-1/2">
+          <img src="./assets/icons/choose.jpg" alt="Why Choose Us Image" class="rounded-lg shadow-lg w-full object-cover" />
+        </div>
+    
+      </div>
+    </section>
+    
+
+    <!-- Stats -->
+    <section id="stats" class="bg-white py-10 text-center">
+      <div class="container mx-auto max-w-5xl">
+        <h2 class="text-3xl font-bold text-green-700 mb-6">Our Achievements</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+          <div>
+            <p class="text-5xl font-bold text-green-800 counter" data-target="250">0</p>
+            <p class="text-gray-600 mt-2">Projects Completed</p>
+          </div>
+          <div>
+            <p class="text-5xl font-bold text-green-800 counter" data-target="98">0</p>
+            <p class="text-gray-600 mt-2">Client Satisfaction</p>
+          </div>
+          <div>
+            <p class="text-5xl font-bold text-green-800 counter" data-target="15">0</p>
+            <p class="text-gray-600 mt-2">Years of Experience</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="bg-green-50 py-10">
+      <div class="container mx-auto max-w-5xl">
+        <h2 class="text-3xl font-bold text-center text-green-700 mb-6">Client Testimonials</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-lg shadow p-6">
+            <p class="text-gray-700 italic">
+              "Microfarm Company Ltd completely transformed how we approached strategy. We are a leaner, smarter and
+              monpolinable"
+            </p>
+            <p class="text-right mt-4 font-semibold">– Finance Director, ISVIGG Company</p>
+          </div>
+          <div class="bg-white rounded-lg shadow p-6">
+            <p class="text-gray-700 italic">
+              "Their change management team led our digital tranaformation. Seamless execution"
+            </p>
+            <p class="text-right mt-4 font-semibold">– HR Lead, HealthOne Organization</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-green-800 text-white text-center p-4 mt-10">
+    <p>&copy; 2025 Microfarm Company Ltd. Email: info@microfarmconsulting.com. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
