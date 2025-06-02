@@ -127,14 +127,90 @@ function setupDarkMode() {
 
   function applyTheme(isDark) {
     body.classList.toggle("dark", isDark);
+    document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("theme", isDark ? "dark" : "light");
+    
     if (thumb && toggleSwitch) {
       thumb.style.transform = isDark ? "translateX(100%)" : "translateX(0)";
-      toggleSwitch.classList.toggle("bg-green-500", isDark);
+      toggleSwitch.classList.toggle("bg-green-600", isDark);
       toggleSwitch.classList.toggle("bg-gray-300", !isDark);
+    }
+
+    // Update header background
+    const header = document.querySelector("header");
+    if (header) {
+      header.classList.toggle("bg-green-800", !isDark);
+      header.classList.toggle("bg-gray-900", isDark);
+    }
+
+    // Update all sections with proper backgrounds
+    const sections = document.querySelectorAll("section");
+    sections.forEach(section => {
+      // Handle sections that should have green-50 background in light mode
+      if (section.id === "mission" || 
+          section.id === "vision" || 
+          section.id === "progress" || 
+          section.id === "testimonials" || 
+          section.id === "contact") {
+        section.classList.toggle("bg-green-50", !isDark);
+        section.classList.toggle("bg-gray-900", isDark);
+      }
+
+      // Handle stats section
+      if (section.id === "stats") {
+        section.classList.toggle("bg-white", !isDark);
+        section.classList.toggle("bg-gray-900", isDark);
+      }
+      
+      // Update text colors for all section headings
+      const heading = section.querySelector("h2");
+      if (heading) {
+        heading.classList.toggle("text-green-800", !isDark);
+        heading.classList.toggle("text-gray-100", isDark);
+      }
+
+      // Update text colors for mission and vision paragraphs
+      if (section.id === "mission" || section.id === "vision") {
+        const paragraph = section.querySelector("p");
+        if (paragraph) {
+          paragraph.classList.toggle("text-gray-800", !isDark);
+          paragraph.classList.toggle("text-white", isDark);
+        }
+      }
+    });
+
+    // Update cards background
+    const cards = document.querySelectorAll(".bg-white");
+    cards.forEach(card => {
+      card.classList.toggle("bg-white", !isDark);
+      card.classList.toggle("bg-gray-800", isDark);
+      card.classList.toggle("text-white", isDark);
+    });
+
+    // Update footer
+    const footer = document.querySelector("footer");
+    if (footer) {
+      footer.classList.toggle("bg-green-800", !isDark);
+      footer.classList.toggle("bg-gray-900", isDark);
+    }
+
+    // Update cookie consent if it exists
+    const cookieConsent = document.querySelector("#cookieConsent");
+    if (cookieConsent) {
+      cookieConsent.classList.toggle("bg-white", !isDark);
+      cookieConsent.classList.toggle("bg-gray-900", isDark);
+      cookieConsent.classList.toggle("text-gray-800", !isDark);
+      cookieConsent.classList.toggle("text-white", isDark);
     }
   }
 
+  // Check system preference
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches && !localStorage.getItem("theme")) {
+    toggle.checked = true;
+    applyTheme(true);
+  }
+
+  // Check saved preference
   if (localStorage.getItem("theme") === "dark") {
     toggle.checked = true;
     applyTheme(true);
