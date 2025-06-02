@@ -153,24 +153,52 @@ function setupMobileMenu() {
   const mainNav = document.getElementById("mainNav");
 
   menuToggle?.addEventListener("click", () => {
-    if (mainNav.classList.contains("hidden")) {
-      mainNav.classList.remove("hidden");
-      mainNav.classList.add("flex", "flex-col", "absolute", "top-full", "right-4", "bg-green-800", "p-4", "rounded-lg", "shadow-lg", "md:hidden");
-    } else {
+    mainNav.classList.toggle("show");
+    mainNav.classList.toggle("hidden");
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
+      mainNav.classList.remove("show");
       mainNav.classList.add("hidden");
-      mainNav.classList.remove("flex", "flex-col", "absolute", "top-full", "right-4", "bg-green-800", "p-4", "rounded-lg", "shadow-lg");
     }
   });
 
-  // Optional: Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
-      if (!mainNav.classList.contains("hidden")) {
-        mainNav.classList.add("hidden");
-        mainNav.classList.remove("flex", "flex-col", "absolute", "top-full", "right-4", "bg-green-800", "p-4", "rounded-lg", "shadow-lg");
-      }
-    }
-  });
+  // Contact Form Handling
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = {
+        name: contactForm.querySelector("input[type='text']").value,
+        email: contactForm.querySelector("input[type='email']").value,
+        message: contactForm.querySelector("textarea").value
+      };
+
+      // Show success message
+      const submitButton = contactForm.querySelector("button[type='submit']");
+      const originalText = submitButton.textContent;
+      submitButton.textContent = "Message Sent!";
+      submitButton.style.backgroundColor = "#059669"; // green-600
+      submitButton.style.color = "white";
+
+      // Reset form
+      contactForm.reset();
+
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        submitButton.textContent = originalText;
+        submitButton.style.backgroundColor = "";
+        submitButton.style.color = "";
+      }, 3000);
+
+      // Log the form data (replace with your actual form handling logic)
+      console.log("Form submitted:", formData);
+    });
+  }
 }
 
 // ========================== Smooth Scroll ==========================
@@ -194,6 +222,7 @@ function setupHomeBackground() {
     document.body.classList.add("home-active");
   });
 }
+
 // typing effect
 const text = "Grow Smarter with Microfarm";
 const typingSpeed = 150; // milliseconds per character

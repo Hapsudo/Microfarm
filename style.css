@@ -1,11 +1,12 @@
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 10rem; /* Adjust based on your header height */
+    scroll-padding-top: 4rem;
   }
   
   
   body {
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
   
   .active {
@@ -101,37 +102,129 @@ body {
   transition: max-height 0.3s ease;
 }
 
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  #mainNav {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    background: #166534;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 40;
+  }
+
+  #mainNav.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #mainNav a {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+  }
+
+  #mainNav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Form Styles */
+input, textarea {
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Button Styles */
 button, 
 a.inline-block {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 button:hover, 
 a.inline-block:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(72, 187, 120, 0.5);
-  background-color: #34d399; /* Tailwind’s green-400 as example */
-  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+}
+
+button:active,
+a.inline-block:active {
+  transform: translateY(0);
+}
+
+/* Hero Section Enhancements */
+.hero-glow {
+  animation: pulseGlow 2.5s infinite;
+  position: relative;
+}
+
+.hero-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, rgba(72, 187, 120, 0.5), transparent);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-glow:hover::after {
+  opacity: 1;
 }
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 8px 0 rgba(72, 187, 120, 0.6);
+    box-shadow: 0 0 10px rgba(72, 187, 120, 0.6);
   }
   50% {
-    box-shadow: 0 0 20px 6px rgba(72, 187, 120, 0.9);
+    box-shadow: 0 0 25px rgba(72, 187, 120, 0.9);
   }
 }
 
-.hero-glow {
-  animation: pulseGlow 2.5s infinite;
-  transition: background-color 0.3s ease;
+/* Footer Styles */
+footer a {
+  transition: color 0.2s ease-in-out;
 }
 
-.hero-glow:hover {
-  animation-play-state: paused; /* Pause glow on hover */
-  background-color: #22c55e; /* Tailwind green-500 */
-  box-shadow: 0 0 25px 8px rgba(72, 187, 120, 1);
+footer a:hover {
+  color: #4ade80; /* green-400 */
+}
+
+footer ul li a {
+  display: inline-block;
+  position: relative;
+}
+
+footer ul li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #4ade80;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+footer ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 
