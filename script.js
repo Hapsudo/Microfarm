@@ -125,10 +125,19 @@ function setupDarkMode() {
   const body = document.body;
   const thumb = toggleSwitch?.querySelector("div");
 
+  // Remove any existing theme class first
+  document.documentElement.classList.remove('dark');
+  body.classList.remove('dark');
+  localStorage.removeItem('theme');
+  
   function applyTheme(isDark) {
     body.classList.toggle("dark", isDark);
     document.documentElement.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    if (isDark) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.removeItem("theme");
+    }
     
     if (thumb && toggleSwitch) {
       thumb.style.transform = isDark ? "translateX(100%)" : "translateX(0)";
@@ -153,20 +162,20 @@ function setupDarkMode() {
           section.id === "testimonials" || 
           section.id === "contact") {
         section.classList.toggle("bg-green-50", !isDark);
-        section.classList.toggle("bg-gray-900", isDark);
+        section.classList.toggle("bg-gray-800", isDark);
       }
 
       // Handle stats section
       if (section.id === "stats") {
         section.classList.toggle("bg-white", !isDark);
-        section.classList.toggle("bg-gray-900", isDark);
+        section.classList.toggle("bg-gray-800", isDark);
       }
       
       // Update text colors for all section headings
       const heading = section.querySelector("h2");
       if (heading) {
         heading.classList.toggle("text-green-800", !isDark);
-        heading.classList.toggle("text-gray-100", isDark);
+        heading.classList.toggle("text-gray-200", isDark);
       }
 
       // Update text colors for mission and vision paragraphs
@@ -174,7 +183,16 @@ function setupDarkMode() {
         const paragraph = section.querySelector("p");
         if (paragraph) {
           paragraph.classList.toggle("text-gray-800", !isDark);
-          paragraph.classList.toggle("text-white", isDark);
+          paragraph.classList.toggle("text-gray-200", isDark);
+        }
+      }
+
+      // Update Values and Why Choose Us sections
+      if (section.id === "values" || section.id === "whyChooseUs") {
+        const list = section.querySelector("ul");
+        if (list) {
+          list.classList.toggle("text-gray-800", !isDark);
+          list.classList.toggle("text-gray-200", isDark);
         }
       }
     });
@@ -198,23 +216,15 @@ function setupDarkMode() {
     const cookieConsent = document.querySelector("#cookieConsent");
     if (cookieConsent) {
       cookieConsent.classList.toggle("bg-white", !isDark);
-      cookieConsent.classList.toggle("bg-gray-900", isDark);
+      cookieConsent.classList.toggle("bg-gray-800", isDark);
       cookieConsent.classList.toggle("text-gray-800", !isDark);
-      cookieConsent.classList.toggle("text-white", isDark);
+      cookieConsent.classList.toggle("text-gray-200", isDark);
     }
   }
 
-  // Check system preference
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches && !localStorage.getItem("theme")) {
-    toggle.checked = true;
-    applyTheme(true);
-  }
-
-  // Check saved preference
-  if (localStorage.getItem("theme") === "dark") {
-    toggle.checked = true;
-    applyTheme(true);
-  }
+  // Initialize in light mode
+  toggle.checked = false;
+  applyTheme(false);
 
   toggle?.addEventListener("change", () => applyTheme(toggle.checked));
   toggleSwitch?.addEventListener("click", () => {
